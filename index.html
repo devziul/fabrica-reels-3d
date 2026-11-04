@@ -3,275 +3,416 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fábrica de Reels 3D Virais — crie vídeos 3D low-poly com o Claude Opus 5.5</title>
-<meta name="description" content="O passo a passo para criar Reels 3D low-poly no formato 'Você é um X' usando o Claude Opus 5.5. Prompts prontos, do zero ao vídeo postado.">
-<meta property="og:title" content="Fábrica de Reels 3D Virais">
-<meta property="og:description" content="Você é um idiota. E seu amigo que vive falando de política é o normal. Aprenda a fazer esse tipo de vídeo.">
-<meta property="og:image" content="img/og.jpg">
-<link rel="icon" href="img/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<title>Método Poly · Você escreve a história. A IA anima.</title>
+<meta name="description" content="70 prompts e o molde pronto para criar Reels 3D low-poly narrados que contam histórias reais, com o Claude. Sem saber animar e sem aparecer.">
+<meta property="og:title" content="Método Poly · Você escreve a história. A IA anima.">
+<meta property="og:description" content="70 prompts + o molde pronto para Reels 3D low-poly narrados com IA.">
+<meta property="og:image" content="img/demo1.jpg">
 <style>
-:root{--bg:#14151F;--bg2:#1D1F2C;--bg3:#262938;--tx:#E9E8F2;--mut:#A3A6BC;--am:#FFD23F;--ver:#FF5A5F;--azul:#5ED3F3;--verde:#7BE08A}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:Rubik,system-ui,sans-serif;font-size:17px;line-height:1.55}
-img,video{max-width:100%;display:block}
-.w{max-width:1040px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-weight:900;line-height:1.05;margin:0;letter-spacing:-.5px}
-h2{font-size:clamp(28px,4.6vw,44px);text-transform:uppercase;margin-bottom:14px}
-h2 em,h1 em{color:var(--am);font-style:normal}
-.tag{display:inline-block;background:var(--am);color:#14151F;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:5px 11px;border-radius:6px;transform:rotate(-2deg);margin-bottom:14px}
-.tag.r{background:var(--ver);color:#fff}
-section{padding:72px 0}
-.alt{background:var(--bg2)}
-.btn{display:inline-block;background:var(--am);color:#14151F;font-weight:900;font-size:20px;text-transform:uppercase;text-decoration:none;padding:20px 34px;border-radius:12px;box-shadow:0 6px 0 #b8901a,0 14px 30px rgba(255,210,63,.25);transition:transform .1s}
-.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 #b8901a,0 10px 24px rgba(255,210,63,.25)}
-.btn small{display:block;font-size:12px;font-weight:700;letter-spacing:.5px;opacity:.8;margin-top:3px}
-.sob{font-size:14px;color:var(--mut);margin-top:12px}
+@font-face{font-family:Mont;src:url(img/montserrat-latin-400-normal.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Mont;src:url(img/montserrat-latin-600-normal.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Mont;src:url(img/montserrat-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Mont;src:url(img/montserrat-latin-800-normal.woff2) format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:Mont;src:url(img/montserrat-latin-900-normal.woff2) format('woff2');font-weight:900;font-display:swap}
+@font-face{font-family:Lora;src:url(img/lora-latin-600-normal.woff2) format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Lora;src:url(img/lora-latin-700-normal.woff2) format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:Lora;src:url(img/lora-latin-500-italic.woff2) format('woff2');font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:Lora;src:url(img/lora-latin-600-italic.woff2) format('woff2');font-weight:600;font-style:italic;font-display:swap}
+:root{--pp:#F7F1E6;--pp2:#EFE6D4;--line:#DCCFB8;--ink:#17181F;--ink2:#2A2C36;--mut:#6B6253;--red:#D8283D;--am:#FFD43B;--ink-mut:#BDB4A2;--max:1080px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--pp);color:var(--ink);font:400 17px/1.6 Mont,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.w{max-width:var(--max);margin:0 auto;padding:0 24px}
+.k{font:800 12px/1 Mont;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+.dark .k{color:var(--am)}
+h1,h2,h3{font-family:Lora,Georgia,serif;font-weight:600;letter-spacing:-.015em;margin:0}
+h1{font-size:clamp(44px,7.2vw,84px);line-height:1.02}
+h2{font-size:clamp(32px,4.6vw,52px);line-height:1.06;margin:14px 0 18px}
+h3{font-size:22px;line-height:1.2}
+em{font-family:Lora,Georgia,serif;font-style:italic;color:var(--red);font-weight:600}
+.dark em{color:var(--am)}
+section{padding:96px 0}
+.dark{background:var(--ink);color:#F3EDE1}
+.dark .mut{color:var(--ink-mut)}
+.mut{color:var(--mut)}
+.lead{font-size:19px;max-width:620px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;font:800 15px/1 Mont;letter-spacing:.04em;padding:18px 26px;border-radius:10px;box-shadow:0 5px 0 #8F1626;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 #8F1626}
+.btn:active{transform:translateY(5px);box-shadow:none}
+.btn:focus-visible{outline:3px solid var(--am);outline-offset:3px}
+.micro{font:600 13px/1.5 Mont;color:var(--mut);margin-top:14px}
+.dark .micro{color:var(--ink-mut)}
 /* topo */
-.topbar{background:var(--ver);color:#fff;text-align:center;font-weight:700;font-size:14px;padding:9px 12px;letter-spacing:.3px}
-.hero{padding:46px 0 70px;background:radial-gradient(900px 500px at 75% 20%,rgba(255,210,63,.10),transparent 60%)}
-.hero .g{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
-.hero h1{font-size:clamp(36px,6vw,64px);text-transform:uppercase}
-.hero p.l{font-size:20px;color:#d5d4e2;margin:18px 0 26px;max-width:560px}
-.phone{position:relative;justify-self:center;width:min(330px,80vw);aspect-ratio:9/16;border-radius:34px;padding:10px;background:#000;border:3px solid #2c2f40;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 8px rgba(255,210,63,.08)}
-.phone video{width:100%;height:100%;object-fit:cover;border-radius:26px;background:#000}
-.phone .som{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.7);color:#fff;border:1.5px solid var(--am);font:800 13px Rubik;letter-spacing:1px;padding:8px 14px;border-radius:30px;cursor:pointer}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chips span{background:var(--bg3);border:1px solid #34374a;padding:6px 12px;border-radius:30px;font-size:14px;color:#cfd0de}
-/* blocos */
-.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.card{background:var(--bg3);border:1px solid #33364a;border-radius:16px;padding:22px}
-.card h3{font-size:21px;margin:10px 0 8px}
-.card p{margin:0;color:#cfd0de;font-size:16px}
-.num{font-weight:900;font-size:40px;color:var(--am);line-height:1}
-.grid-ganchos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
-.gch{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:9/14;background:#000 center/cover}
-.gch:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.85))}
-.gch b{position:absolute;left:12px;right:12px;bottom:12px;z-index:1;font-weight:900;font-size:17px;line-height:1.15;text-transform:uppercase}
-.gch b i{display:block;font-style:normal;color:var(--am);font-size:13px;font-weight:700;text-transform:none;margin-top:4px}
-.passos{counter-reset:p;display:grid;gap:14px;margin-top:28px}
-.passo{display:grid;grid-template-columns:62px 1fr;gap:16px;align-items:start;background:var(--bg3);border-radius:14px;padding:18px}
-.passo:before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:52px;height:52px;border-radius:12px;background:var(--am);color:#14151F;font-weight:900;font-size:26px}
-.passo h3{font-size:20px;margin-bottom:4px}.passo p{margin:0;color:#cfd0de}
-.modulos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.mod{background:var(--bg3);border-radius:16px;overflow:hidden;border:1px solid #33364a}
-.mod .im{height:170px;background:#000 center/cover}
-.mod .c{padding:18px 20px 20px}
-.mod .c small{color:var(--am);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
-.mod h3{font-size:22px;margin:4px 0 10px;text-transform:uppercase}
-.mod ul{margin:0;padding-left:18px;color:#cfd0de;font-size:15px}.mod li{margin-bottom:4px}
-.amostras{display:flex;gap:16px;overflow-x:auto;padding:8px 2px 18px;margin-top:26px;scroll-snap-type:x mandatory}
-.amostras img{height:430px;width:auto;border-radius:10px;scroll-snap-align:start;box-shadow:0 12px 30px rgba(0,0,0,.5);border:1px solid #33364a}
-.lista{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px 26px}
-.lista li{padding-left:34px;position:relative}
-.lista li:before{content:'✓';position:absolute;left:0;top:0;width:24px;height:24px;border-radius:6px;background:var(--verde);color:#14151F;font-weight:900;display:grid;place-items:center;font-size:15px}
-.lista.x li:before{content:'✗';background:var(--ver);color:#fff}
-.bump{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:center;background:linear-gradient(135deg,#262938,#1d1f2c);border:2px dashed var(--am);border-radius:18px;padding:26px}
-.bump img{border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,.5)}
-.bump h3{font-size:26px;text-transform:uppercase;margin:6px 0 10px}
-.preco{max-width:560px;margin:30px auto 0;background:var(--bg3);border:2px solid var(--am);border-radius:22px;padding:34px 28px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.preco img{width:230px;margin:0 auto 18px;border-radius:8px}
-.preco .de{color:var(--mut);font-size:15px}
-.preco .por{font-size:62px;font-weight:900;color:#fff;line-height:1;margin:6px 0}
-.preco .por small{font-size:26px;vertical-align:top;margin-right:4px}
-.preco .parc{color:var(--am);font-weight:700;margin-bottom:22px}
-.preco ul{text-align:left;list-style:none;padding:0;margin:0 0 26px}
-.preco li{padding:8px 0 8px 30px;border-bottom:1px solid #33364a;position:relative}
-.preco li:before{content:'✓';position:absolute;left:4px;color:var(--verde);font-weight:900}
-.pag{display:flex;justify-content:center;gap:10px;margin-top:16px;color:var(--mut);font-size:13px;flex-wrap:wrap}
-.pag span{background:var(--bg2);padding:5px 10px;border-radius:6px}
-.garantia{display:grid;grid-template-columns:130px 1fr;gap:26px;align-items:center;max-width:820px;margin:0 auto}
-.selo7{width:130px;height:130px;border-radius:50%;background:var(--am);color:#14151F;display:grid;place-items:center;text-align:center;font-weight:900;line-height:1;box-shadow:0 0 0 8px rgba(255,210,63,.18)}
-.selo7 b{font-size:50px;display:block}
-details{background:var(--bg3);border-radius:12px;margin-bottom:10px;padding:0 20px;border:1px solid #33364a}
-summary{cursor:pointer;font-weight:700;padding:18px 0;list-style:none;font-size:17px}
-summary:after{content:'+';float:right;color:var(--am);font-weight:900;font-size:22px;line-height:1}
+.top{border-bottom:1.5px solid var(--ink)}
+.top .w{display:flex;justify-content:space-between;align-items:center;height:58px;font:800 12px Mont;letter-spacing:.2em;text-transform:uppercase}
+.top a{text-decoration:none}
+/* hero */
+.hero{padding:64px 0 88px}
+.hero .w{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{margin:18px 0 22px}
+.hero .lead{margin:0 0 30px}
+.visual{position:relative;height:560px}
+.livro{position:absolute;left:0;top:40px;width:62%;height:auto;border-radius:4px 10px 10px 4px;box-shadow:-6px 0 0 #E7DCC6,0 30px 50px -20px rgba(23,24,31,.45);transform:rotate(-4deg)}
+.cel{position:absolute;right:0;top:0;width:52%;aspect-ratio:9/16;border-radius:28px;border:9px solid var(--ink);overflow:hidden;background:#000;box-shadow:0 30px 60px -24px rgba(23,24,31,.55);transform:rotate(3deg)}
+.cel video{width:100%;height:100%;object-fit:cover}
+.som{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(23,24,31,.82);color:#fff;border:0;border-radius:99px;font:800 12px Mont;letter-spacing:.06em;padding:9px 14px;cursor:pointer}
+.som:focus-visible{outline:3px solid var(--am)}
+/* demos */
+.demos{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:36px;justify-content:center;margin-top:44px}
+.demo .cel{position:relative;width:100%;transform:none;border-color:#000}
+.demo p{font-size:15px;margin:14px 0 0}
+.honesto{max-width:640px;margin:44px auto 0;border-top:1px solid #3a3c47;padding-top:24px;font-size:16px;text-align:center}
+/* problema */
+.duas{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.roteiro{border:1.5px solid var(--ink);border-radius:12px;padding:26px 26px 22px;background:#fff8ec}
+.roteiro.ruim{background:transparent;border-style:dashed;border-color:var(--mut)}
+.roteiro .tag{font:800 11px Mont;letter-spacing:.18em;text-transform:uppercase}
+.roteiro.ruim .tag{color:var(--mut)}
+.roteiro.bom .tag{color:var(--red)}
+.roteiro ol{margin:14px 0 0;padding-left:20px;font-size:15.5px}
+.roteiro li{margin-bottom:6px}
+.roteiro .v{font:700 14px Mont;margin-top:14px}
+.roteiro.ruim .v{color:var(--mut)}
+/* passos */
+.passos{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink);margin-top:40px}
+.passo{padding:26px 22px 8px 0}
+.passo+.passo{padding-left:22px;border-left:1px solid var(--line)}
+.passo .n{font:600 italic 44px/1 Lora;color:var(--red)}
+.passo h3{margin:12px 0 8px}
+.passo p{font-size:15px;margin:0}
+/* sumário */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:44px}
+.caps h4{font:800 12px Mont;letter-spacing:.2em;text-transform:uppercase;color:var(--am);margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid #3a3c47}
+.caps ol{list-style:none;margin:0;padding:0}
+.caps li{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid #2c2e38;font-size:15.5px}
+.caps li b{font:600 italic 17px Lora;color:var(--am);min-width:24px}
+/* amostra */
+.prompt{background:var(--ink);color:#EFE8DA;border-radius:12px;padding:30px 24px 22px;position:relative;margin-top:28px;font:400 14px/1.6 Consolas,'Courier New',monospace;white-space:pre-wrap}
+.prompt .cab{position:absolute;top:-13px;left:20px;background:var(--am);color:var(--ink);font:800 11px Mont;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:6px}
+.prompt .troca{color:var(--am)}
+.amostras{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+/* números */
+.nums{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);margin-top:56px}
+.nums div{padding:26px 10px;text-align:center}
+.nums div+div{border-left:1px solid var(--line)}
+.nums b{display:block;font:600 52px/1 Lora}
+.nums span{font:800 11px Mont;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+/* molde */
+.molde{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.galeria img{border-radius:10px;aspect-ratio:9/16;object-fit:cover}
+.lista{list-style:none;padding:0;margin:20px 0 0}
+.lista li{padding:11px 0 11px 30px;border-bottom:1px solid #2c2e38;position:relative;font-size:16px}
+.lista li:before{content:'';position:absolute;left:2px;top:19px;width:12px;height:7px;border-left:2.5px solid var(--am);border-bottom:2.5px solid var(--am);transform:rotate(-45deg)}
+/* pra quem */
+.quem{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;margin-top:36px}
+.quem>div{border-radius:12px;padding:28px}
+.sim{background:#fff8ec;border:1.5px solid var(--ink)}
+.nao{border:1.5px dashed var(--mut)}
+.quem ul{margin:12px 0 0;padding-left:20px}
+.quem li{margin-bottom:8px}
+/* dinheiro */
+.formas{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border-top:1px solid var(--line)}
+.formas div{padding:20px 18px 20px 0;border-bottom:1px solid var(--line);font-size:15px}
+.formas b{display:block;font:600 italic 20px Lora;color:var(--red);margin-bottom:4px}
+/* oferta */
+.oferta{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+.preco{background:var(--pp);color:var(--ink);border-radius:16px;padding:34px 30px;text-align:center}
+.preco .de{font:700 14px Mont;color:var(--mut)}
+.preco .val{font:600 72px/1 Lora;margin:8px 0 4px}
+.preco .val small{font:700 22px Mont;vertical-align:top;margin-right:4px}
+.preco .par{font:700 15px Mont;margin-bottom:24px}
+.preco .btn{width:100%;justify-content:center}
+.preco .micro{color:var(--mut)}
+.bump{margin-top:22px;border-top:1px dashed var(--line);padding-top:18px;font-size:14.5px;text-align:left}
+.bump b{color:var(--red)}
+.garantia{display:flex;gap:24px;align-items:center;max-width:760px;margin:0 auto}
+.selo7{flex:0 0 116px;height:116px;border-radius:50%;background:var(--am);display:flex;flex-direction:column;align-items:center;justify-content:center;font:600 50px/1 Lora;box-shadow:0 6px 0 var(--ink)}
+.selo7 span{font:800 11px Mont;letter-spacing:.16em}
+/* faq */
+.faq{max-width:780px;margin:30px auto 0}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font:600 20px Lora;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:'+';font:400 26px Mont;color:var(--red);line-height:1}
 details[open] summary:after{content:'–'}
-details p{margin:0 0 18px;color:#cfd0de}
-footer{padding:40px 0 110px;color:var(--mut);font-size:13px;text-align:center;border-top:1px solid #262938}
-.fix{position:fixed;left:0;right:0;bottom:0;background:rgba(20,21,31,.96);border-top:1px solid #33364a;padding:10px 16px;display:none;z-index:9;justify-content:center;align-items:center;gap:16px}
-.fix .btn{font-size:16px;padding:13px 22px;box-shadow:0 4px 0 #b8901a}
-.fix span{font-weight:800}
-.center{text-align:center}
-.lead{font-size:19px;color:#d5d4e2;max-width:760px}
-.center .lead{margin:0 auto}
-@media(max-width:860px){
- .hero .g,.bump,.garantia{grid-template-columns:1fr}
- .hero{padding-top:30px}.hero .txt{text-align:center}.hero p.l{margin-left:auto;margin-right:auto}.chips{justify-content:center}
- .cols3,.modulos{grid-template-columns:1fr}
- .grid-ganchos{grid-template-columns:repeat(2,1fr)}
- .lista{grid-template-columns:1fr}
- .bump img{max-width:200px;margin:0 auto}
- .selo7{margin:0 auto}.garantia{text-align:center}
- section{padding:54px 0}
- .amostras img{height:340px}
- .fix{display:flex}
+details p{margin:12px 0 0;color:var(--ink2)}
+summary:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.final{text-align:center}
+.final h2{max-width:800px;margin:16px auto 28px}
+footer{padding:40px 0 60px;font-size:13px;color:var(--mut);border-top:1.5px solid var(--ink)}
+footer .w{display:flex;flex-direction:column;gap:8px}
+.barra{position:fixed;left:0;right:0;bottom:0;background:var(--ink);color:#fff;display:none;align-items:center;justify-content:space-between;padding:12px 16px;z-index:9}
+.barra b{font:600 22px Lora}
+.barra .btn{padding:13px 18px;font-size:13px;box-shadow:none}
+@media (max-width:860px){
+  body{font-size:16px}
+  section{padding:68px 0}
+  .hero{padding:36px 0 64px}
+  .hero .w,.molde,.oferta,.quem,.duas,.amostras{grid-template-columns:1fr}
+  .visual{height:420px;max-width:420px;margin:0 auto;width:100%}
+  .passos,.formas{grid-template-columns:1fr 1fr}
+  .passo+.passo{padding-left:0;border-left:0}
+  .passo:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+  .caps{grid-template-columns:1fr;gap:28px}
+  .nums{grid-template-columns:1fr 1fr}
+  .nums div:nth-child(3){border-left:0}
+  .nums div:nth-child(n+3){border-top:1px solid var(--line)}
+  .demos{grid-template-columns:minmax(0,300px);}
+  .garantia{flex-direction:column;text-align:center}
+  .barra{display:flex}
+  footer{padding-bottom:96px}
 }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div class="topbar">Você é um idiota. Calma: na Grécia antiga isso era só quem não ligava pra política. ↓</div>
 
-<header class="hero">
- <div class="w g">
-  <div class="txt">
-   <div class="tag r">Formato que faz comentar</div>
-   <h1>Faça Reels 3D que fazem as pessoas <em>marcar o amigo</em></h1>
-   <p class="l">O passo a passo completo para criar vídeos de animação 3D low-poly no formato <b>“Você é um X”</b> usando o <b>Claude Opus 5.5</b>. Você cola os prompts, a IA escreve e roda o código, e sai um Reel pronto para postar.</p>
-   <a class="btn" href="#oferta">Quero montar minha fábrica<small>acesso imediato · ou 8x de R$ 5,51</small></a>
-   <div class="chips"><span>Sem saber animar</span><span>Sem editor de vídeo</span><span>Prompts prontos</span><span>Do zero ao post</span></div>
-  </div>
-  <div class="phone"><video id="demo" src="img/demo.mp4" poster="img/demo.jpg" autoplay muted loop playsinline></video><button class="som" onclick="var v=document.getElementById('demo');v.muted=!v.muted;this.textContent=v.muted?'🔊 ATIVAR SOM':'🔇 SEM SOM'">🔊 ATIVAR SOM</button></div>
- </div>
-</header>
+<header class="top"><div class="w"><a href="#">Método Poly</a><span>Edição nº 01</span></div></header>
 
-<section class="alt">
- <div class="w center">
-  <div class="tag">Por que esse formato funciona</div>
-  <h2>O gancho é o <em>produto</em></h2>
-  <p class="lead">O vídeo começa chamando quem assiste de algo que soa como xingamento. Dois segundos depois, vira uma curiosidade de verdade. A pessoa fica para entender, ri, e marca o amigo nos comentários.</p>
-  <div class="cols3" style="text-align:left">
-   <div class="card"><div class="num">0–4s</div><h3>O xingamento</h3><p>“Você é um idiota. E seu amigo que vive falando de política é o normal.” Ninguém passa reto.</p></div>
-   <div class="card"><div class="num">4–40s</div><h3>Os fatos</h3><p>5 ou 6 curiosidades verdadeiras, com números grandes, rótulos e objetos 3D caindo na tela. Prende até o fim.</p></div>
-   <div class="card"><div class="num">40–50s</div><h3>A virada</h3><p>“Repito: você é um idiota. E agora sabe por quê.” Comentário, compartilhamento e “marca o fulano”.</p></div>
+<section class="hero">
+  <div class="w">
+    <div>
+      <div class="k">Método Poly · guia prático</div>
+      <h1>Você escreve a <em>história</em>. A IA <em>anima</em>.</h1>
+      <p class="lead">70 prompts e o molde pronto para criar Reels 3D low-poly narrados, que contam histórias reais, com o Claude. Sem saber animar, sem aparecer e sem programar.</p>
+      <a class="btn" href="https://pay.kiwify.com.br/rUYFYRI">Quero o Método Poly →</a>
+      <div class="micro">Acesso imediato · PDF + molde · Garantia de 7 dias</div>
+    </div>
+    <div class="visual">
+      <img class="livro" src="img/capa_ebook.png" alt="Capa do e-book Método Poly" width="900" height="1275">
+      <div class="cel">
+        <video id="v0" src="img/demo1.mp4" poster="img/demo1.jpg" autoplay muted loop playsinline></video>
+        <button class="som" data-v="v0" type="button">🔊 Ativar som</button>
+      </div>
+    </div>
   </div>
- </div>
+</section>
+
+<section class="dark" id="resultados">
+  <div class="w" style="text-align:center">
+    <div class="k">Feito com o molde</div>
+    <h2>Isto saiu de um <em>roteiro.json</em></h2>
+    <p class="lead mut" style="margin:0 auto">Personagens, cenário, câmera, voz, legenda, efeitos e música. Tudo gerado por código que o Claude escreveu. Eu só aprovei cada etapa.</p>
+    <div class="demos">
+      <div class="demo"><div class="cel"><video id="v1" src="img/demo1.mp4" poster="img/demo1.jpg" muted loop playsinline preload="none"></video><button class="som" data-v="v1" type="button">▶ Assistir com som</button></div><p class="mut">"Você é um vândalo": gancho, alfinetada e a travessia do Reno com contador de km.</p></div>
+      <div class="demo"><div class="cel"><video id="v2" src="img/demo2.mp4" poster="img/demo2.jpg" muted loop playsinline preload="none"></video><button class="som" data-v="v2" type="button">▶ Assistir com som</button></div><p class="mut">O vídeo de exemplo que vem no molde: telejornal, HUD e CTA no fim.</p></div>
+    </div>
+    <p class="honesto mut">Sendo honesto: a minha página <strong style="color:#fff">@historiaxingada</strong> é nova, então não vou te mostrar print de views que eu ainda não tenho. Vou te mostrar o vídeo e o método inteiro, e você decide.</p>
+  </div>
 </section>
 
 <section>
- <div class="w">
-  <div class="tag">Funciona em qualquer nicho</div>
-  <h2>Escolha o xingamento.<br><em>A fábrica faz o resto.</em></h2>
-  <p class="lead">História, corpo humano, biologia, animais... O mesmo formato, trocando só o sujeito, o cenário e os personagens.</p>
-  <div class="grid-ganchos">
-   <div class="gch" style="background-image:url(img/g1.jpg)"><b>Você é um idiota.<i>e na Grécia isso tinha outro sentido</i></b></div>
-   <div class="gch" style="background-image:url(img/g2.jpg)"><b>Você é um cabeça-oca.<i>e seu crânio tem buracos de propósito</i></b></div>
-   <div class="gch" style="background-image:url(img/g3.jpg)"><b>Você é uma piranha.<i>e no fundo você é medrosa</i></b></div>
-   <div class="gch" style="background-image:url(img/g4.jpg)"><b>Você é uma galinha.<i>e é parente do T-rex</i></b></div>
+  <div class="w">
+    <div class="k">O problema</div>
+    <h2>Por que os Reels de IA <em>falam nada com nada</em></h2>
+    <p class="lead">A IA não é ruim. É que, sem método, ela entrega uma lista de curiosidades soltas. E lista não prende ninguém até o fim. O meu primeiro roteiro foi assim:</p>
+    <div class="duas">
+      <div class="roteiro ruim">
+        <div class="tag">Antes · "Você é um idiota"</div>
+        <ol><li>A palavra vem do grego.</li><li>É da mesma raiz de "idioma".</li><li>Em Atenas, uma corda com tinta vermelha…</li><li>Quem saía manchado levava multa.</li><li>Depois pagavam para votar.</li></ol>
+        <div class="v">Cinco fatos, nenhuma história. Tire uma frase e nada muda.</div>
+      </div>
+      <div class="roteiro bom">
+        <div class="tag">Depois · "Você é um vândalo"</div>
+        <ol><li>Em 406, um povo cruza o Reno congelado.</li><li>Atravessa a França e chega à Espanha.</li><li>Em 429, 80 mil pessoas entram em barcos rumo à África.</li><li>Tomam Cartago. De lá, enxergam Roma.</li><li>Em 455, saqueiam Roma por 14 dias.</li></ol>
+        <div class="v">Uma viagem só, com um contador de km na tela. Cada frase puxa a próxima.</div>
+      </div>
+    </div>
   </div>
- </div>
 </section>
 
-<section class="alt">
- <div class="w">
-  <div class="tag">Como funciona</div>
-  <h2>Do zero ao Reel <em>em 4 passos</em></h2>
-  <div class="passos">
-   <div class="passo"><div><h3>Instala o Claude Code</h3><p>Com o passo a passo para Windows e Mac. Plano pago do Claude, que já vem com o Opus 5.5.</p></div></div>
-   <div class="passo"><div><h3>Cola os 5 prompts-mestre</h3><p>O Opus 5.5 monta a sua fábrica: motor 3D, voz com legenda palavra por palavra, câmeras, cenários e o render em MP4 vertical.</p></div></div>
-   <div class="passo"><div><h3>Usa o prompt do dia a dia</h3><p>Você diz o tema. A IA escreve o roteiro com fatos checados e fonte, monta as cenas, revisa e renderiza.</p></div></div>
-   <div class="passo"><div><h3>Posta e repete</h3><p>Legenda, hashtags e créditos já saem prontos. Um vídeo por dia em várias páginas vira rotina.</p></div></div>
+<section style="padding-top:0">
+  <div class="w">
+    <div class="k">A solução</div>
+    <h2>Um método em <em>4 passos</em></h2>
+    <div class="passos">
+      <div class="passo"><div class="n">01</div><h3>Página-alvo</h3><p>Escolha uma página que viraliza no visual que você quer. O Claude tira o raio-X: arte, câmera, fontes, sons.</p></div>
+      <div class="passo"><div class="n">02</div><h3>Ficha de estilo</h3><p>Tudo vira uma ficha que você reaproveita. Você copia o estilo, não o conteúdo.</p></div>
+      <div class="passo"><div class="n">03</div><h3>Roteiro de linha única</h3><p>Gancho, escalada com contador, virada e CTA. Fatos checados, com fonte.</p></div>
+      <div class="passo"><div class="n">04</div><h3>Molde</h3><p>O roteiro vira <code>roteiro.json</code> e um comando gera o vídeo pronto para postar.</p></div>
+    </div>
   </div>
- </div>
+</section>
+
+<section class="dark">
+  <div class="w">
+    <div class="k">O que tem dentro</div>
+    <h2>15 capítulos, <em>do zero ao vídeo pronto</em></h2>
+    <div class="caps">
+      <div><h4>Parte 1 · O Método</h4><ol>
+        <li><b>01</b>Por que Reels 3D de história prendem</li><li><b>02</b>Raio-X de uma página-alvo</li><li><b>03</b>A ficha de estilo</li><li><b>04</b>O roteiro de linha única</li><li><b>05</b>Fatos que não te derrubam</li><li><b>06</b>Do roteiro ao roteiro.json</li><li><b>07</b>Voz, legenda e som</li><li><b>08</b>Quando sai errado</li></ol></div>
+      <div><h4>Parte 2 · A Fábrica</h4><ol>
+        <li><b>09</b>Instalando o molde</li><li><b>10</b>Seu primeiro vídeo em três comandos</li><li><b>11</b>Ensinando o molde a fazer coisas novas</li><li><b>12</b>A rotina: um vídeo por dia</li><li><b>13</b>Postar sem queimar a página</li><li><b>14</b>Transformando views em dinheiro</li></ol></div>
+      <div><h4>Parte 3 · Bastidores</h4><ol>
+        <li><b>15</b>Os prompts que eu uso na minha página</li><li><b>+</b>Checklist de cada vídeo</li></ol></div>
+    </div>
+  </div>
 </section>
 
 <section>
- <div class="w">
-  <div class="tag">O que tem dentro</div>
-  <h2>82 páginas, <em>15 capítulos</em></h2>
-  <div class="modulos">
-   <div class="mod"><div class="im" style="background-image:url(img/m1.jpg)"></div><div class="c"><small>Parte I</small><h3>O Formato</h3><ul><li>Por que esse formato prende</li><li>A anatomia de um Reel 3D viral</li><li>Nicho, página e identidade</li></ul></div></div>
-   <div class="mod"><div class="im" style="background-image:url(img/m2.jpg)"></div><div class="c"><small>Parte II</small><h3>A Fábrica</h3><ul><li>O que você precisa</li><li>Instalando o Claude Code e falando com o Opus 5.5</li><li>Prompts 1 e 2: preparar a máquina e construir o motor 3D</li><li>Prompts 3 e 4: voz, render e biblioteca de modelos</li><li>Prompt 5: o primeiro vídeo</li><li>Quando dá erro</li></ul></div></div>
-   <div class="mod"><div class="im" style="background-image:url(img/m3.jpg)"></div><div class="c"><small>Parte III</small><h3>Produção e dinheiro</h3><ul><li>O roteiro com fatos checados</li><li>Revisão em 1 minuto</li><li>Postar: legenda, hashtags, capa, comentários</li><li>Três páginas, uma rotina</li><li>Como ganhar dinheiro com a página</li><li>Os erros que matam uma página</li><li>Extra: checklist de cada vídeo</li></ul></div></div>
+  <div class="w">
+    <div class="k">Amostra grátis</div>
+    <h2>Veja como são <em>os prompts</em></h2>
+    <p class="lead">Copie, troque o que está em amarelo e cole no Claude.</p>
+    <div class="amostras">
+<div class="prompt"><span class="cab">Prompt 43 · Do roteiro ao vídeo</span>Na pasta videos/<span class="troca">[nome-do-video]</span>/ tem um roteiro.md com a tabela | # | Fala | Visual | HUD |.
+Transforme em roteiro.json seguindo o formato de videos/exemplo/roteiro.json.
+
+Regras:
+- uma cena por linha da tabela
+- a "fala" é copiada sem mudar nenhuma palavra
+- nunca repita a mesma câmera em duas cenas seguidas
+- números difíceis vão para "pronuncia"
+- a última cena tem topo "LINK NA BIO"
+
+Depois rode o --validar e corrija até não sobrar ERRO.</div>
+<div class="prompt"><span class="cab">Prompt 44 · Revisar as cenas</span>Rodei "python poly_video.py videos/<span class="troca">[nome-do-video]</span> --stills".
+Olhe a imagem _build/contato.jpg (um quadro por cena).
+
+Para cada cena, diga OK ou o problema:
+cabeça cortada, personagem tapado, cena vazia,
+visual que não combina com a fala.
+
+Para cada problema, proponha a mudança no
+roteiro.json (camera, x/z, seed, pose ou objetos),
+aplique e me mostre de novo só as cenas alteradas.</div>
+    </div>
+    <div class="nums"><div><b>119</b><span>páginas</span></div><div><b>70</b><span>prompts</span></div><div><b>15</b><span>capítulos</span></div><div><b>1</b><span>molde pronto</span></div></div>
   </div>
-  <div class="amostras"><img src="img/amostra0.jpg" alt="Página 2 do e-book"><img src="img/amostra1.jpg" alt="Página 3 do e-book"><img src="img/amostra2.jpg" alt="Página 9 do e-book"><img src="img/amostra3.jpg" alt="Página 33 do e-book"><img src="img/amostra4.jpg" alt="Página 49 do e-book"><img src="img/amostra5.jpg" alt="Página 57 do e-book"></div>
-  <p class="sob center">Algumas páginas reais do e-book. Arraste para o lado →</p>
- </div>
 </section>
 
-<section class="alt">
- <div class="w">
-  <div class="tag">É pra você se</div>
-  <h2>Pra quem é <em>(e pra quem não é)</em></h2>
-  <ul class="lista">
-   <li>Quer uma página faceless que cresce com comentário e compartilhamento</li>
-   <li>Não sabe animar nem editar e não quer aprender After Effects</li>
-   <li>Quer produzir em lote: vários vídeos por semana, várias páginas</li>
-   <li>Quer usar IA de verdade, não só pedir texto pro chat</li>
-   <li>Quer vender produto digital pelo link da bio</li>
-   <li>Tem um computador (Windows ou Mac) e uma tarde para montar tudo</li>
-  </ul>
-  <ul class="lista x" style="margin-top:26px">
-   <li>Quer resultado sem postar com constância</li>
-   <li>Só tem celular (a fábrica roda no computador)</li>
-  </ul>
- </div>
+<section class="dark">
+  <div class="w molde">
+    <div class="galeria">
+      <img src="img/saque.jpg" alt="Multidão de vândalos numa cidade romana, em 3D low-poly">
+      <img src="img/rei.jpg" alt="Rei em frente a um castelo, em 3D low-poly">
+      <img src="img/cientista.jpg" alt="Cientista surpresa num laboratório, em 3D low-poly">
+      <img src="img/garoto.jpg" alt="Garoto riscando a carteira da escola, em 3D low-poly">
+    </div>
+    <div>
+      <div class="k">Bônus incluso</div>
+      <h2>O <em>molde</em> que fez esses vídeos</h2>
+      <p class="mut">Você não começa do zero. Junto com o e-book vem o <strong style="color:#fff">molde-poly.zip</strong>, o mesmo motor que eu uso, com instalador de um comando.</p>
+      <ul class="lista">
+        <li>12 mundos (neve, Roma, castelo, laboratório, praia…) e 22 personagens</li>
+        <li>Câmeras, poses, multidões, HUD-contador e telejornal prontos</li>
+        <li>Voz clonada grátis (placa NVIDIA) ou voz neural sem placa</li>
+        <li>Legenda karaokê automática e volume no padrão do Reels</li>
+        <li>Validador que avisa o erro antes de você perder tempo</li>
+      </ul>
+      <p class="micro">Requisitos: Windows ou Mac, 8 GB de RAM. A placa NVIDIA é opcional. A assinatura do Claude não está inclusa.</p>
+    </div>
+  </div>
 </section>
 
 <section>
- <div class="w">
-  <div class="bump">
-   <img src="img/bump.png" alt="100 Ganchos + 30 Roteiros Prontos">
-   <div>
-    <div class="tag r">Oferta especial no checkout</div>
-    <h3>100 Ganchos + 30 Roteiros Prontos</h3>
-    <p style="color:#cfd0de;margin:0">Os ganchos e roteiros completos para os primeiros 30 dias, em história, anatomia, biologia e animais. Cada roteiro já vem cena a cena, com sugestão de câmera, cenário, personagens e as fontes dos fatos. Aparece como opção na hora da compra, por <b style="color:var(--am)">R$ 19,90</b>.</p>
-   </div>
+  <div class="w">
+    <div class="k">É para você?</div>
+    <h2>Pra quem <em>é</em> e pra quem não é</h2>
+    <div class="quem">
+      <div class="sim"><h3>É pra quem…</h3><ul>
+        <li>quer criar uma página de vídeos sem aparecer</li>
+        <li>gosta de história, ciência ou curiosidade e quer contar isso bem</li>
+        <li>já tentou vídeo com IA e achou genérico</li>
+        <li>topa seguir um passo a passo e aprovar cada etapa</li></ul></div>
+      <div class="nao"><h3>Não é pra quem…</h3><ul>
+        <li>procura dinheiro fácil sem postar</li>
+        <li>quer copiar vídeo dos outros</li></ul></div>
+    </div>
   </div>
- </div>
 </section>
 
-<section class="alt" id="oferta">
- <div class="w center">
-  <div class="tag">Acesso imediato</div>
-  <h2>Monte sua <em>fábrica</em> hoje</h2>
-  <div class="preco">
-   <img src="img/mockup.png" alt="Fábrica de Reels 3D Virais">
-   <div class="de">E-book completo + prompts-mestre</div>
-   <div class="por"><small>R$</small>37,90</div>
-   <div class="parc">ou 8x de R$ 5,51 no cartão · ou Pix / boleto</div>
-   <ul>
-    <li>E-book “Fábrica de Reels 3D Virais” (82 páginas)</li>
-    <li>Os 5 prompts-mestre para o Claude Opus 5.5 montar a fábrica</li>
-    <li>O prompt do dia a dia: roteiro com fato checado + vídeo</li>
-    <li>Capítulo “Quando dá erro”, com o que pedir à IA em cada caso</li>
-    <li>Checklist de cada vídeo e rotina para 3 páginas</li>
-   </ul>
-   <a class="btn" href="https://pay.kiwify.com.br/rUYFYRI">Quero a Fábrica<small>pagamento seguro pela Kiwify</small></a>
-   <div class="pag"><span>Cartão em até 12x</span><span>Pix</span><span>Boleto</span></div>
+<section style="padding-top:0">
+  <div class="w">
+    <div class="k">Monetização</div>
+    <h2>8 formas de ganhar <em>com uma página</em></h2>
+    <p class="lead">No capítulo 14 você vê cada uma com um exemplo de página de história. Resultados dependem do seu trabalho e da constância. Não prometemos ganhos.</p>
+    <div class="formas">
+      <div><b>01</b>Programas das plataformas</div><div><b>02</b>Publis com marcas</div><div><b>03</b>Afiliados</div><div><b>04</b>Produto digital próprio</div>
+      <div><b>05</b>Vídeos para empresas</div><div><b>06</b>Produção para outras páginas</div><div><b>07</b>Moldes e templates</div><div><b>08</b>Comunidade</div>
+    </div>
   </div>
- </div>
+</section>
+
+<section class="dark" id="oferta">
+  <div class="w oferta">
+    <div>
+      <div class="k">Oferta</div>
+      <h2>Tudo o que <em>você leva</em></h2>
+      <ul class="lista">
+        <li>E-book Método Poly, 119 páginas em PDF</li>
+        <li>70 prompts prontos para copiar e colar (também em .txt)</li>
+        <li>O molde pronto (molde-poly.zip) com instalador</li>
+        <li>Roteiro de exemplo completo para o primeiro vídeo</li>
+        <li>8 formas de monetizar, com exemplo de página de história</li>
+        <li>Checklist de cada vídeo</li>
+        <li>Garantia de 7 dias</li>
+      </ul>
+    </div>
+    <div class="preco">
+      <div class="de">Acesso completo por</div>
+      <div class="val"><small>R$</small>37,90</div>
+      <div class="par">ou 8x de R$ 5,51 no cartão</div>
+      <a class="btn" href="https://pay.kiwify.com.br/rUYFYRI">Quero o Método Poly →</a>
+      <div class="micro">Pagamento seguro pela Kiwify · Pix, boleto ou cartão</div>
+      <div class="bump">No checkout você pode adicionar <b>30 Roteiros de Linha Única + 100 Ganchos Xingados</b> (com <code>roteiro.json</code> prontos para o molde) por R$ 19,90. É opcional.</div>
+    </div>
+  </div>
 </section>
 
 <section>
- <div class="w">
-  <div class="garantia">
-   <div class="selo7"><div><b>7</b>DIAS</div></div>
-   <div><h2 style="font-size:30px">Garantia <em>incondicional</em></h2><p class="lead" style="margin:0">Leu, testou e não gostou? Peça o reembolso em até 7 dias pela própria Kiwify e recebe 100% do valor de volta. Sem perguntas.</p></div>
+  <div class="w">
+    <div class="garantia">
+      <div class="selo7">7<span>DIAS</span></div>
+      <div><h3>Garantia incondicional de 7 dias</h3><p class="mut" style="margin:8px 0 0">Entrou, leu, testou e não gostou? Peça o reembolso pela Kiwify em até 7 dias e você recebe 100% do valor de volta. Sem pergunta.</p></div>
+    </div>
   </div>
- </div>
 </section>
 
-<section class="alt">
- <div class="w" style="max-width:820px">
-  <div class="tag">Dúvidas</div>
-  <h2>Perguntas <em>frequentes</em></h2>
-  <details><summary>Preciso saber programar?</summary><p>Não. Quem escreve e roda o código é o Claude Opus 5.5. Você abre um programa, cola os prompts na ordem e aprova o que ele pede. O e-book explica cada passo, inclusive o que é o terminal e como abrir uma pasta.</p></details>
-  <details><summary>O que eu preciso ter?</summary><p>Um computador com Windows 10/11 ou Mac, internet e uma assinatura paga do Claude (o plano Pro já inclui o Claude Code com o Opus 5.5). As demais ferramentas (Python, Chrome, ffmpeg) são gratuitas, e o livro mostra como instalar.</p></details>
-  <details><summary>A assinatura do Claude está inclusa?</summary><p>Não. Ela é contratada direto com a Anthropic, no site do Claude. O e-book mostra os planos e qual basta para começar.</p></details>
-  <details><summary>Funciona no celular?</summary><p>A fábrica roda no computador. O vídeo pronto você manda para o celular e posta normalmente.</p></details>
-  <details><summary>Os modelos 3D e a música têm direito autoral?</summary><p>O livro ensina a usar modelos gratuitos de licença livre (CC0) e a dar o crédito quando a licença pede (CC-BY). Para a música, use a biblioteca do próprio Instagram/TikTok ou faixas livres de direitos.</p></details>
-  <details><summary>Como recebo?</summary><p>Logo após a confirmação do pagamento, você recebe o acesso por e-mail e baixa o PDF na área de membros da Kiwify. No Pix e no cartão, o acesso é imediato.</p></details>
-  <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. É só pedir o reembolso pela Kiwify.</p></details>
- </div>
+<section style="padding-top:0">
+  <div class="w">
+    <div class="k" style="text-align:center">Dúvidas</div>
+    <h2 style="text-align:center">Perguntas <em>frequentes</em></h2>
+    <div class="faq">
+      <details><summary>Preciso saber programar ou animar?</summary><p>Não. Você escreve a história e aprova. Quem escreve o código é o Claude, e o molde já vem pronto. Você vai usar o terminal para copiar e colar comandos, e o capítulo 9 mostra cada um.</p></details>
+      <details><summary>Funciona no Claude grátis?</summary><p>Os prompts de roteiro, ficha de estilo e checagem de fatos funcionam no app grátis. O Claude Code, que instala e edita o molde com você, exige um plano pago da Anthropic, que não está incluso.</p></details>
+      <details><summary>Preciso de um PC forte?</summary><p>Windows ou Mac com 8 GB de RAM já roda. Com placa NVIDIA você ganha a voz clonada (Chatterbox). Sem ela, o molde usa uma voz neural grátis. O resto é igual.</p></details>
+      <details><summary>Funciona em outras IAs?</summary><p>Os prompts de texto funcionam em qualquer IA boa. O método de instalação e edição do molde foi feito e testado com o Claude Code.</p></details>
+      <details><summary>Serve para outros nichos?</summary><p>Sim. O formato funciona para qualquer história com começo, meio e fim: história, ciência, corpo humano, origem das coisas. O capítulo 11 ensina a criar mundos e personagens novos.</p></details>
+      <details><summary>Como eu recebo?</summary><p>Logo depois do pagamento, chega no seu e-mail o acesso à área de membros da Kiwify, com o PDF, os prompts em .txt e o molde-poly.zip.</p></details>
+      <details><summary>Vou viralizar com certeza?</summary><p>Ninguém pode garantir isso. O método te dá vídeo bem feito e história que prende. Alcance depende de constância, nicho e das plataformas.</p></details>
+    </div>
+  </div>
 </section>
 
-<section>
- <div class="w center">
-  <h2>Você é um <em>idiota</em><br>se deixar pra depois.</h2>
-  <p class="lead" style="margin-bottom:26px">(No sentido grego: quem só cuida da própria vida e não aproveita a oportunidade.)</p>
-  <a class="btn" href="https://pay.kiwify.com.br/rUYFYRI">Quero a Fábrica por R$ 37,90<small>ou 8x de R$ 5,51 · Pix · boleto</small></a>
- </div>
+<section class="dark final">
+  <div class="w">
+    <div class="k">Sua vez</div>
+    <h2>Você já tem as histórias. Agora <em>a IA anima</em>.</h2>
+    <a class="btn" href="https://pay.kiwify.com.br/rUYFYRI">Quero o Método Poly →</a>
+    <div class="micro">R$ 37,90 · acesso imediato · garantia de 7 dias</div>
+  </div>
 </section>
 
-<footer>
- <div class="w">
-  <p>Fábrica de Reels 3D · @historiaxingada · @anatomiaxingada · @biologiaxingada</p>
-  <p>Claude, Claude Code e Opus são marcas da Anthropic. Este produto é independente e não tem afiliação com a Anthropic, Meta ou TikTok. Os resultados dependem do seu trabalho e das plataformas; não prometemos número de seguidores, visualizações ou vendas.</p>
-  <p>Pagamento processado pela Kiwify. © 2026 Fábrica de Reels 3D.</p>
- </div>
-</footer>
-<div class="fix"><span>R$ 37,90</span><a class="btn" href="#oferta">Quero a Fábrica</a></div>
+<footer><div class="w">
+  <strong style="color:var(--ink)">Método Poly · @historiaxingada</strong>
+  <span>© 2026 · Pagamento processado pela Kiwify · Suporte: sparkcutsof@gmail.com</span>
+  <span>Este produto não garante resultados financeiros nem de alcance. Claude e Claude Code são marcas da Anthropic, e não temos vínculo oficial. Instagram e TikTok são marcas de seus donos. Música dos vídeos de exemplo: "Sneaky Snitch", Kevin MacLeod (incompetech.com), CC BY 4.0.</span>
+</div></footer>
+
+<div class="barra"><b>R$ 37,90</b><a class="btn" href="https://pay.kiwify.com.br/rUYFYRI">Quero o Método Poly →</a></div>
+
+<script>
+document.querySelectorAll('.som').forEach(function(b){
+  b.addEventListener('click',function(){
+    var v=document.getElementById(b.dataset.v);
+    document.querySelectorAll('video').forEach(function(o){ if(o!==v){ o.muted=true; } });
+    v.muted=false; v.currentTime=0; v.play(); b.remove();
+  });
+});
+</script>
 </body>
 </html>
